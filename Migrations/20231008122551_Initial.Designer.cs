@@ -11,8 +11,8 @@ using cookie_stand_api.Data;
 namespace cookie_stand_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231003130357_Initial1")]
-    partial class Initial1
+    [Migration("20231008122551_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
