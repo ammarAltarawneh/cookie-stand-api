@@ -1,20 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace cookie_stand_api.Models
+﻿namespace cookie_stand_api.Models.Dtos
 {
-    public class CookieStand
+    public class CookieStandViewDto
     {
         public int Id { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
+
+        public List<int> hourlySale { get; set; }
         public int MinimumCustomersPerHour { get; set; }
         public int MaximumCustomersPerHour { get; set; }
         public double AverageCookiesPerSale { get; set; }
         public string? Owner { get; set; }
-
-
-        public List<HourlySales> hourlySale { get; set; }
-
     }
 }

@@ -9,27 +9,42 @@ namespace cookie_stand_api.Data
 
         public DbSet<CookieStand> cookieStands { get; set; }
 
-        //public DbSet<HourlySales> hourlySales { get; set; }
+        public DbSet<HourlySales> hourlySales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {          
-            modelBuilder.Entity<CookieStand>().HasData(
-            new CookieStand() { Id = 1, Location = "Barcelona", Description = "", MinimumCustomersPerHour = 3, MaximumCustomersPerHour = 7, AverageCookiesPerSale = 2.5, Owner = null}
-               );
-
-            modelBuilder.Entity<CookieStand>().HasKey(c => c.Id);
-        
-
-            //modelBuilder.Entity<HourlySales>().HasKey(
-            //    hourlySales => new { hourlySales.CookieStandId,hourlySales.Hour, hourlySales.SalesPerHour }
-            //    );
-
-            //modelBuilder.Entity<HourlySales>().HasData(
-            //new HourlySales() { CookieStandId = 1,Hour=1,SalesPerHour=1 }
-            //);
-
-
+        {
             base.OnModelCreating(modelBuilder);
+
+            // Seed data
+            var cookieStands = new List<CookieStand>
+        {
+            new CookieStand
+            {
+                Id=1,
+                Location = "Barcelona",
+                Description = "bla bla",
+                MinimumCustomersPerHour = 2,
+                MaximumCustomersPerHour = 4,
+                AverageCookiesPerSale = 2.5,
+                Owner = "Ali"
+            },
+            new CookieStand
+            {
+                Id=2,
+                Location = "Irbid",
+                Description = "description2",
+                MinimumCustomersPerHour = 3,
+                MaximumCustomersPerHour = 7,
+                AverageCookiesPerSale = 1.75,
+                Owner = "Salma"
+            }
+        };
+
+            // Add the data to the context
+            modelBuilder.Entity<CookieStand>().HasData(cookieStands);
+
+            modelBuilder.Entity<CookieStand>()
+     .HasKey(c => c.Id);
         }
 
     }

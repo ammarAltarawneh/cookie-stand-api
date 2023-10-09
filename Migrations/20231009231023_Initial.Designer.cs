@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using cookie_stand_api.Data;
 
@@ -10,9 +11,11 @@ using cookie_stand_api.Data;
 namespace cookie_stand_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231009231023_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,21 +61,21 @@ namespace cookie_stand_api.Migrations
                         {
                             Id = 1,
                             AverageCookiesPerSale = 2.5,
-                            Description = "bla bla",
-                            Location = "Barcelona",
-                            MaximumCustomersPerHour = 4,
-                            MinimumCustomersPerHour = 2,
-                            Owner = "Ali"
+                            Description = "description1",
+                            Location = "Amman",
+                            MaximumCustomersPerHour = 7,
+                            MinimumCustomersPerHour = 3,
+                            Owner = "Person1"
                         },
                         new
                         {
                             Id = 2,
-                            AverageCookiesPerSale = 1.75,
+                            AverageCookiesPerSale = 2.5,
                             Description = "description2",
                             Location = "Irbid",
                             MaximumCustomersPerHour = 7,
                             MinimumCustomersPerHour = 3,
-                            Owner = "Salma"
+                            Owner = "Person2"
                         });
                 });
 

@@ -1,20 +1,17 @@
-﻿namespace cookie_stand_api.Models.Interface
+﻿using cookie_stand_api.Models.Dtos;
+
+namespace cookie_stand_api.Models.Interface
 {
     public interface ICookieStand
     {
-        // CREATE
-        Task<CookieStand> Create(CookieStand cookieStand);
+        Task<CookieStandViewDto> Create(CookieStandDto cookieStand);
 
-        // GET ALL
-        Task<List<CookieStand>> GetAll();
+        Task<IEnumerable<CookieStandViewDto>> GetAll();
 
-        // GET ONE BY ID
-        Task<CookieStand> GetById(int id);
+        Task<CookieStandViewDto> GetById(int id);
 
-        // UPDATE
-        Task<CookieStand> Update(int id, CookieStand cookieStand);
-
-        // DELETE
         Task Delete(int id);
+
+        Task<CookieStand> Update(int id, CookieStandDto updatedCookieStand);
     }
 }

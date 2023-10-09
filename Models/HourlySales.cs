@@ -2,11 +2,13 @@
 {
     public class HourlySales
     {
-        
-        public int CookieStandId { get; set; } // Foreign Key to CookieStand
-        public int Hour { get; set; }
-        public int SalesPerHour { get; set; }
 
-        public CookieStand CookieStand { get; set; }
+        public int Id { get; set; }
+
+        public int StandCookieId { get; set; }
+
+        public int salesvalue { get; set; }
+
+        public CookieStand cookieStand { get; set; }
     }
 }

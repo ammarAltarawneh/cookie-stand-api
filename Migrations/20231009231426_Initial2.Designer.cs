@@ -11,8 +11,8 @@ using cookie_stand_api.Data;
 namespace cookie_stand_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231008122551_Initial")]
-    partial class Initial
+    [Migration("20231009231426_Initial2")]
+    partial class Initial2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,11 +61,62 @@ namespace cookie_stand_api.Migrations
                         {
                             Id = 1,
                             AverageCookiesPerSale = 2.5,
-                            Description = "",
+                            Description = "bla bla",
                             Location = "Barcelona",
+                            MaximumCustomersPerHour = 4,
+                            MinimumCustomersPerHour = 2,
+                            Owner = "Ali"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AverageCookiesPerSale = 1.75,
+                            Description = "description2",
+                            Location = "Irbid",
                             MaximumCustomersPerHour = 7,
-                            MinimumCustomersPerHour = 3
+                            MinimumCustomersPerHour = 3,
+                            Owner = "Salma"
                         });
+                });
+
+            modelBuilder.Entity("cookie_stand_api.Models.HourlySales", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("StandCookieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("cookieStandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("salesvalue")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("cookieStandId");
+
+                    b.ToTable("hourlySales");
+                });
+
+            modelBuilder.Entity("cookie_stand_api.Models.HourlySales", b =>
+                {
+                    b.HasOne("cookie_stand_api.Models.CookieStand", "cookieStand")
+                        .WithMany("hourlySale")
+                        .HasForeignKey("cookieStandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cookieStand");
+                });
+
+            modelBuilder.Entity("cookie_stand_api.Models.CookieStand", b =>
+                {
+                    b.Navigation("hourlySale");
                 });
 #pragma warning restore 612, 618
         }

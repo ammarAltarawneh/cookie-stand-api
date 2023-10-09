@@ -5,7 +5,7 @@ The Cookie Stand API is a RESTful web service that allows you to manage and retr
 This documentation provides an overview of the available endpoints and how to use them.
 
 ## API Swagger Documentation URL
-[Link](https://localhost:7051/docs/index.html): https://localhost:7051/docs/index.html
+Link: https://cookie-stand-apii.azurewebsites.net/docs/index.html
 
 ### ERD: 
 
